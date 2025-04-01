@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee, EmployeeService } from '../employee.service';
-import { CommonModule } from '@angular/common';
+import { CompanyService } from '../company.service';
+import { DepartmentService } from '../department.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { combineLatest } from 'rxjs';
@@ -11,44 +12,52 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-  employee: any[] = [];
-  displayedColumns: string[] = ['name', 'position', 'company', 'department', 'salary', 'actions'];
+  employees: any[] = [];
+  displayedColumns: string[] = ['name', 'position', 'companyName', 'departmentName', 'salaryAmount', 'actions'];
+  companies: any[] = [];
+  departments: any[] = [];
 
-  constructor(private employeeService: EmployeeService, private dialog: MatDialog) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private companyService: CompanyService,
+    private departmentService: DepartmentService,
+    private dialog: MatDialog
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadEmployees();
   }
-
 
   loadEmployees(): void {
     combineLatest([
       this.employeeService.getEmployee(),
-      this.employeeService.getCompanies(),
-      this.employeeService.getDepartments(),
+      this.companyService.getCompany(),
+      this.departmentService.getDepartments(),
       this.employeeService.getSalaries()
     ]).subscribe(([employees, companies, departments, salaries]) => {
-
-      this.employee = employees.map(emp => {
+      this.companies = companies;
+      this.departments = departments;
+  
+      this.employees = employees.map(emp => {
         const company = companies.find(c => c.id === emp.companyId);
         const department = departments.find(d => d.id === emp.departmentId);
         const salary = salaries.find(s => s.employeeId === emp.id);
-  
         return {
           ...emp,
+          salaryId: salary ? salary.id : null,
           companyName: company ? company.name : 'N/A',
           departmentName: department ? department.name : 'N/A',
           salaryAmount: salary ? salary.amount : 'N/A'
         };
       });
-  
     });
   }
   
-  
 
   openDialog(employee?: Employee): void {
-    const dialogRef = this.dialog.open(EmployeeFormComponent, { data: employee });
+    const dialogRef = this.dialog.open(EmployeeFormComponent, {
+      data: { employee, companies: this.companies, departments: this.departments }
+    });
     dialogRef.afterClosed().subscribe(() => this.loadEmployees());
   }
 

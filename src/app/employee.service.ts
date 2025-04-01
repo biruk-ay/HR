@@ -66,6 +66,11 @@ export class EmployeeService {
     return this.http.post(this.salaryUrl, salary);
   }
 
+  updateSalary(salary: { id: number; amount: number; employeeId: number }): Observable<any> {
+    return this.http.put(`${this.salaryUrl}/${salary.id}`, salary);
+  }
+  
+
   createEmployeeWithSalary(employee: Employee, salaryAmount: number): Observable<any> {
     return this.createEmployee(employee).pipe(
       switchMap((createdEmployee) => 
