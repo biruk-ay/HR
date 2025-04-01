@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Company List</mat-card-title>
+      <mat-card-subtitle>Manage companies</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-table [dataSource]="companies">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Company Name </th>
+        <td mat-cell *matCellDef="let company">{{ company.name }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="industry">
+        <th mat-header-cell *matHeaderCellDef> Industry </th>
+        <td mat-cell *matCellDef="let company">{{ company.industry }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let company">{{ company.location }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let company">
+          <button mat-button color="primary" (click)="openDialog(company)">Edit</button>
+          <button mat-button color="warn" (click)="deleteCompany(company.id)">Delete</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </mat-table>
+  
+    <button mat-fab color="primary" (click)="openDialog()">+</button>
+  </mat-card>
+  

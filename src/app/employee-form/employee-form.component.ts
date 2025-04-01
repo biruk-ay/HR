@@ -22,8 +22,8 @@ export class EmployeeFormComponent {
         id: [data && data.id ? data.id : null],
         name: [data && data.name ? data.name : '', Validators.required],
         position: [data && data.position ? data.position : '', Validators.required],
-        companyId: [data && data.companyId ? data.companyId : null, Validators.required],
-        departmentId: [data && data.departmentId ? data.departmentId : null, Validators.required],
+        company: [data && data.companyId ? data.companyId : null, Validators.required],
+        department: [data && data.departmentId ? data.departmentId : null, Validators.required],
     });
  }
 

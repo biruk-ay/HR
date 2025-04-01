@@ -1,0 +1,26 @@
+<mat-dialog-content>
+    <form [formGroup]="candidateForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter candidate name">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter email">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" placeholder="Enter phone">
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="saveCandidate()" [disabled]="!candidateForm.valid">
+      Save
+    </button>
+  </mat-dialog-actions>
+  
