@@ -18,12 +18,12 @@ import { MatInputModule } from '@angular/material/input';
 import { CandidateFormComponent } from './candidate-form/candidate-form.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { DepartmentFormComponent } from './departments-form/departments-form.component';
-// import { DepartmentListComponent } from './departments-form/departments-form.component';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { DepartmentListComponent } from './departments-list/departments-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
     DepartmentFormComponent,
     CandidateListComponent,
     CompanyListComponent,
-    // DepartmentListComponent
+    DepartmentListComponent
   ],
   imports: [
     BrowserModule,
