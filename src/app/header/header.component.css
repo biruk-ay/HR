@@ -1,27 +1,33 @@
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .toolbar-links {
+    display: none;
   }
-  
+  .mobile-menu {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 601px) {
+  .toolbar-links {
+    display: inline-flex;
+  }
   .mobile-menu {
     display: none;
   }
-  
-  @media (max-width: 600px) {
-    .toolbar-links {
-      display: none;
-    }
-    .mobile-menu {
-      display: inline-flex;
-    }
-  }
-  
-  @media (min-width: 601px) {
-    .toolbar-links a[mat-button]:hover {
-        display: none;
-        background-color: rgba(17, 6, 163, 0.1);
-      }
-    .mobile-menu {
-      display: none;
-    }
-  }
-  
+}
+
+::ng-deep .mat-menu-item:hover {
+  background-color: rgb(252, 249, 249) !important;
+}
+
+mat-menu .mat-menu-item:hover {
+  background-color: rgb(252, 249, 249) !important;
+}
