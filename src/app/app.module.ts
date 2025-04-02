@@ -24,6 +24,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DepartmentListComponent } from './departments-list/departments-list.component';
+import { HeaderComponent } from './header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { DepartmentListComponent } from './departments-list/departments-list.com
     DepartmentFormComponent,
     CandidateListComponent,
     CompanyListComponent,
-    DepartmentListComponent
+    DepartmentListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +56,9 @@ import { DepartmentListComponent } from './departments-list/departments-list.com
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
     ReactiveFormsModule,
   ],
   entryComponents: [EmployeeFormComponent, CandidateFormComponent, CompanyFormComponent, DepartmentFormComponent],

@@ -1,37 +1,57 @@
-<mat-card>
+<div style="width: 100%;">
+  <mat-card style="width: 100%; margin: 0;">
     <mat-card-header>
       <mat-card-title>Candidate List</mat-card-title>
       <mat-card-subtitle>Manage candidates</mat-card-subtitle>
     </mat-card-header>
-  
-    <mat-table [dataSource]="candidates">
+    
+    <!-- Use <table mat-table> instead of <mat-table> -->
+    <table mat-table [dataSource]="candidates" class="full-width-table">
+
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let candidate">{{ candidate.name }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let candidate">{{ candidate.email }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let candidate">{{ candidate.phone }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let candidate">
-          <button mat-button color="primary" (click)="openDialog(candidate)">Edit</button>
-          <button mat-button color="warn" (click)="deleteCandidate(candidate.id)">Delete</button>
+        <th mat-header-cell *matHeaderCellDef style="width:25%"> Name </th>
+        <td mat-cell *matCellDef="let candidate" style="width:25%">
+          {{ candidate.name }}
         </td>
       </ng-container>
-  
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef style="width:25%"> Email </th>
+        <td mat-cell *matCellDef="let candidate" style="width:25%">
+          {{ candidate.email }}
+        </td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef style="width:25%"> Phone </th>
+        <td mat-cell *matCellDef="let candidate" style="width:25%">
+          {{ candidate.phone }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef 
+        style="width:25%; text-align:center; overflow: initial; text-overflow: initial; white-space: normal;"> Actions </th>
+        <td mat-cell *matCellDef="let candidate" 
+        style="width:25%; text-align:center; overflow: initial; text-overflow: initial; white-space: normal;">
+          <button mat-button color="primary" (click)="openDialog(candidate)">
+            <mat-icon class="icon">edit</mat-icon>
+          </button>
+          <button mat-button color="warn" (click)="deleteCandidate(candidate.id)">
+            <mat-icon class="icon">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Header / Row Definitions -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </mat-table>
-  
-    <button mat-fab color="primary" (click)="openDialog()">+</button>
+    </table>
+    
   </mat-card>
-  
+    <button mat-fab color="primary" (click)="openDialog()" class="create">+</button>
+</div>

@@ -1,0 +1,27 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+  
+  @media (max-width: 600px) {
+    .toolbar-links {
+      display: none;
+    }
+    .mobile-menu {
+      display: inline-flex;
+    }
+  }
+  
+  @media (min-width: 601px) {
+    .toolbar-links a[mat-button]:hover {
+        display: none;
+        background-color: rgba(17, 6, 163, 0.1);
+      }
+    .mobile-menu {
+      display: none;
+    }
+  }
+  

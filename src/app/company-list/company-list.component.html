@@ -1,10 +1,11 @@
-<mat-card>
-    <mat-card-header>
+<div style="width: 100%;">
+  <mat-card style="width: 100%; margin: 0;">
+      <mat-card-header>
       <mat-card-title>Company List</mat-card-title>
       <mat-card-subtitle>Manage companies</mat-card-subtitle>
     </mat-card-header>
   
-    <mat-table [dataSource]="companies">
+    <table mat-table [dataSource]="companies" class="full-width-table">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Company Name </th>
         <td mat-cell *matCellDef="let company">{{ company.name }}</td>
@@ -21,17 +22,23 @@
       </ng-container>
   
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let company">
-          <button mat-button color="primary" (click)="openDialog(company)">Edit</button>
-          <button mat-button color="warn" (click)="deleteCompany(company.id)">Delete</button>
+        <th mat-header-cell *matHeaderCellDef
+        style="width:25%; text-align:center; overflow: initial; text-overflow: initial; white-space: normal;"> Actions </th>
+        <td mat-cell *matCellDef="let company"
+        style="width:25%; text-align:center; overflow: initial; text-overflow: initial; white-space: normal;">
+          <button mat-button color="primary" (click)="openDialog(company)">
+            <mat-icon class="icon">edit</mat-icon>
+          </button>
+          <button mat-button color="warn" (click)="deleteCompany(company.id)">
+            <mat-icon class="icon">delete</mat-icon>
+          </button>
         </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </mat-table>
+    </table>
   
-    <button mat-fab color="primary" (click)="openDialog()">+</button>
   </mat-card>
-  
+  <button mat-fab color="primary" (click)="openDialog()" class="create">+</button>
+</div>

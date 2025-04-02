@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span>HR Management System</span>
+    <span class="spacer"></span>
+    
+    <div class="toolbar-links">
+      <a mat-button routerLink="/employees">Employees</a>
+      <a mat-button routerLink="/company">Companies</a>
+      <a mat-button routerLink="/departments">Departments</a>
+      <a mat-button routerLink="/candidate">Candidates</a>
+    </div>
+  
+    <button mat-icon-button class="mobile-menu" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/employees">Employees</button>
+    <button mat-menu-item routerLink="/company">Companies</button>
+    <button mat-menu-item routerLink="/departments">Departments</button>
+    <button mat-menu-item routerLink="/candidate">Candidates</button>
+  </mat-menu>
+  
+  
