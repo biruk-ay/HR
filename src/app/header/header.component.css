@@ -1,33 +1,83 @@
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;  /* Prevents children from overflowing the toolbar */
+  padding: 0 8px;    /* Adjust as needed */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 1;    /* Allow the left section to shrink if needed */
+  /* margin-left: 16px; */
+}
+
+.left-section a {
+  margin-left: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;  /* Adjust this width based on your design */
+}
+
+/* The unauthenticated links (login/register) */
+.unauth-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0; /* Keep these buttons intact without shrinking too much */
+}
+
+/* Spacer pushes content to the right */
 .spacer {
   flex: 1 1 auto;
 }
 
+/* Authenticated view styling */
+.toolbar-links {
+  display: inline-flex;
+  gap: 10px;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+
+.welcome-text {
+  margin-right: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile menu button: hidden by default (desktop) */
 .mobile-menu {
   display: none;
 }
 
+/* Responsive behavior: for screens 600px or less */
 @media (max-width: 600px) {
-  .toolbar-links {
+  /* Hide desktop navigation and welcome text on small screens */
+  .toolbar-links,
+  .welcome-text,
+  .unauth-links {
     display: none;
   }
+  /* Show mobile menu button if authenticated */
   .mobile-menu {
     display: inline-flex;
   }
 }
 
 @media (min-width: 601px) {
-  .toolbar-links {
-    display: inline-flex;
+  /* Apply extra left margin only to the first link in the left section */
+  .left-section a:first-of-type {
+    margin-left: 1200px; /* Adjust spacing as desired */
   }
-  .mobile-menu {
-    display: none;
-  }
-}
-
-::ng-deep .mat-menu-item:hover {
-  background-color: rgb(252, 249, 249) !important;
-}
-
-mat-menu .mat-menu-item:hover {
-  background-color: rgb(252, 249, 249) !important;
 }

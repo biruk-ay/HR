@@ -1,35 +1,40 @@
-<mat-toolbar color="primary">
-    <span>HR Management System</span>
-    <span class="spacer"></span>
-    
+<mat-toolbar color="primary" class="header-toolbar">
+  <!-- Left Section: Title, plus Login/Register if NOT authenticated -->
+  <div class="left-section">
+    <span class="mat-body-2">HR Management System</span>
     <ng-container *ngIf="!(authService.currentUser$ | async)">
       <a mat-button routerLink="/login">Login</a>
       <a mat-button routerLink="/register">Register</a>
     </ng-container>
-    
-    <!-- Show user's name if logged in -->
-    <ng-container *ngIf="authService.currentUser$ | async as user">
-      <span>Welcome, {{ user.name }}</span>
-      <button mat-button (click)="logout()">Logout</button>
-    </ng-container>
-    
+  </div>
+
+  <!-- Spacer pushes authenticated links to the right -->
+  <span class="spacer"></span>
+
+  <!-- Authenticated view: welcome text, logout, and navigation -->
+  <ng-container *ngIf="authService.currentUser$ | async as user">
+    <span class="mat-body-1 welcome-text">Welcome, {{ user.name }}</span>
+    <button mat-button (click)="logout()">Logout</button>
+
+    <!-- Desktop nav -->
     <div class="toolbar-links">
       <a mat-button routerLink="/employees">Employees</a>
       <a mat-button routerLink="/company">Companies</a>
       <a mat-button routerLink="/departments">Departments</a>
       <a mat-button routerLink="/candidate">Candidates</a>
     </div>
-  
+
+    <!-- Mobile menu button -->
     <button mat-icon-button class="mobile-menu" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
-  </mat-toolbar>
-  
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item disableRipple routerLink="/employees" class="mat-menu-item">Employees</button>
-    <button mat-menu-item routerLink="/company">Companies</button>
-    <button mat-menu-item routerLink="/departments">Departments</button>
-    <button mat-menu-item routerLink="/candidate">Candidates</button>
-  </mat-menu>
-  
-  
+  </ng-container>
+</mat-toolbar>
+
+<!-- Mobile menu content -->
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/employees">Employees</button>
+  <button mat-menu-item routerLink="/company">Companies</button>
+  <button mat-menu-item routerLink="/departments">Departments</button>
+  <button mat-menu-item routerLink="/candidate">Candidates</button>
+</mat-menu>
