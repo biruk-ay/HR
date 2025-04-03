@@ -7,10 +7,12 @@ import { DepartmentListComponent } from './departments-list/departments-list.com
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
+import { LandingComponent } from './landing/landing.component';
+
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: LandingComponent },
   { path: 'employees', component: EmployeeListComponent, canActivate: [AuthGuard] },
   { path: 'candidate', component: CandidateListComponent, canActivate: [AuthGuard] },
   { path: 'company', component: CompanyListComponent, canActivate: [AuthGuard] },

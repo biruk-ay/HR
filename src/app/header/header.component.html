@@ -2,6 +2,17 @@
     <span>HR Management System</span>
     <span class="spacer"></span>
     
+    <ng-container *ngIf="!(authService.currentUser$ | async)">
+      <a mat-button routerLink="/login">Login</a>
+      <a mat-button routerLink="/register">Register</a>
+    </ng-container>
+    
+    <!-- Show user's name if logged in -->
+    <ng-container *ngIf="authService.currentUser$ | async as user">
+      <span>Welcome, {{ user.name }}</span>
+      <button mat-button (click)="logout()">Logout</button>
+    </ng-container>
+    
     <div class="toolbar-links">
       <a mat-button routerLink="/employees">Employees</a>
       <a mat-button routerLink="/company">Companies</a>

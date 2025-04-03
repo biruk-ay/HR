@@ -30,6 +30,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { RegisterComponent } from './register/register.component';
     DepartmentListComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,7 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
   ],
   entryComponents: [EmployeeFormComponent, CandidateFormComponent, CompanyFormComponent, DepartmentFormComponent],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

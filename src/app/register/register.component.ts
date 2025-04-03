@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     const newUser = this.registerForm.value;
     this.authService.register(newUser).subscribe({
       next: (user: User) => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/employees']);
       },
       error: (err) => {
         this.errorMessage = 'Invalid credentials. Please try again.';
