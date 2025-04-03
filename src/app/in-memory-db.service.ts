@@ -9,6 +9,9 @@ export class InMemoryDBService implements InMemoryDbService {
 
   createDb() {
     return {
+      user: [ 
+        { id: 1, name: "Test", email: "test@gmail.com", password: "test" }
+      ],
       candidate: [
         { id: 1, name: "Abebe", email: "abebe@gmail.com", phone: "0901234567" },
         { id: 2, name: "Kebede", email: "kebede@gmail.com", phone: "0901234568" },

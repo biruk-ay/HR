@@ -1,0 +1,15 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  mat-card {
+    width: 350px;
+  }
+  
+  .error {
+    color: red;
+    margin: 8px 0;
+  }
+  
